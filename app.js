@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/pokemon");
+const { readPokedexData } = require("./middleware/pokedexReader");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/pokemon", readPokedexData);
 app.use("/pokemon", usersRouter);
 
 module.exports = app;
