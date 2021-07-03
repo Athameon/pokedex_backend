@@ -3,7 +3,9 @@ const path = require("path");
 
 exports.extractPokemon = (req, res, next) => {
   const { id } = req.params;
-  const pokemon = JSON.parse(req.pokedex).find((pokemen) => pokemen.id == id);
+  const pokedex =
+    typeof req.pokedex === "String" ? JSON.parse(req.pokedex) : req.pokedex;
+  const pokemon = pokedex.find((pokemen) => pokemen.id == id);
   if (!pokemon) {
     return res
       .status(404)
