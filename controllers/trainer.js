@@ -17,9 +17,15 @@ const modify_trainer = (req, res) => {
   res.send("Trainer modified: " + id);
 };
 
+const delete_trainer = (req, res) => {
+  const { id } = req.params;
+  res.send("Trainer deleted: " + id);
+};
+
 module.exports = {
   get_all_trainers,
   get_trainer,
   create_trainer,
   modify_trainer,
+  delete_trainer,
 };

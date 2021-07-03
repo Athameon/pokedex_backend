@@ -14,4 +14,7 @@ router.post("/", TrainerController.create_trainer);
 // PUT /trainer/:id/
 router.put("/:id", TrainerController.modify_trainer);
 
+// DELETE /trainer/:id/
+router.delete("/:id", TrainerController.delete_trainer);
+
 module.exports = router;
