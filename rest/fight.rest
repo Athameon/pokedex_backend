@@ -10,8 +10,8 @@ content-type: application/json
     "pokemonSecondFighter": [756, 408]
 }
 
-### Create all Fight result
+### Get all Fight result
 GET http://localhost:5050/fight
 
-### Create fight result by trainer
+### Get fight result by trainer
 GET http://localhost:5050/fight/60e14d8c63d0a1dda3edab7d

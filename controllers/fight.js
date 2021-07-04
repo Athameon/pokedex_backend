@@ -2,8 +2,12 @@ const Fight = require("../models/fightModel");
 
 const get_all_fights = (req, res) => {
   Fight.find()
-    .then((fight) => {
-      return res.json(fight);
+    .populate("firstFighter")
+    .populate("secondFighter")
+    .populate("winner")
+    .then((fights) => {
+      replacePokemonIdByObject(fights, req.pokedex);
+      return res.json(fights);
     })
     .catch((error) => {
       console.error(error);
@@ -14,8 +18,12 @@ const get_all_fights = (req, res) => {
 const get_fights_by_trainer = (req, res) => {
   const { id } = req.params;
   Fight.find({ $or: [{ firstFighter: id }, { secondFighter: id }] })
-    .then((fight) => {
-      return res.json(fight);
+    .populate("firstFighter")
+    .populate("secondFighter")
+    .populate("winner")
+    .then((fights) => {
+      replacePokemonIdByObject(fights, req.pokedex);
+      return res.json(fights);
     })
     .catch((error) => {
       console.error(error);
@@ -37,3 +45,17 @@ module.exports = {
   get_fights_by_trainer,
   create_fight_result,
 };
+function replacePokemonIdByObject(fights, pokedex) {
+  fights.forEach((fight) => {
+    fight.pokemonFirstFighter.forEach((pokemon, index) => {
+      fight.pokemonFirstFighter[index] = pokedex.find(
+        (currentPokemon) => currentPokemon.id === pokemon
+      );
+    });
+    fight.pokemonSecondFighter.forEach((pokemon, index) => {
+      fight.pokemonSecondFighter[index] = pokedex.find(
+        (currentPokemon) => currentPokemon.id === pokemon
+      );
+    });
+  });
+}
