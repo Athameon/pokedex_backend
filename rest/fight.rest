@@ -1,0 +1,17 @@
+### Create a Fight result
+POST http://localhost:5050/fight
+content-type: application/json
+
+{
+    "firstFighter": "60e14d8c63d0a1dda3edab7d",
+    "secondFighter": "60e14dbf63d0a1dda3edab7f",
+    "winner": "60e14dbf63d0a1dda3edab7f",
+    "pokemonFirstFighter": [15, 169, 471],
+    "pokemonSecondFighter": [756, 408]
+}
+
+### Create all Fight result
+GET http://localhost:5050/fight
+
+### Create fight result by trainer
+GET http://localhost:5050/fight/60e14d8c63d0a1dda3edab7d

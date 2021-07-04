@@ -9,6 +9,7 @@ require("./db/db");
 const indexRouter = require("./routes/index");
 const pokemonRouter = require("./routes/pokemon");
 const trainerRouter = require("./routes/trainer");
+const fightRouter = require("./routes/fight");
 const { readPokedexData } = require("./middleware/pokedexReader");
 
 const app = express();
@@ -25,5 +26,7 @@ app.use("/", indexRouter);
 app.use("/pokemon", readPokedexData, pokemonRouter);
 
 app.use("/trainer", trainerRouter);
+
+app.use("/fight", fightRouter);
 
 module.exports = app;
