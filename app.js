@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+require("./db/db");
 
 const indexRouter = require("./routes/index");
 const pokemonRouter = require("./routes/pokemon");
@@ -21,8 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-app.use("/pokemon", readPokedexData);
-app.use("/pokemon", pokemonRouter);
+app.use("/pokemon", readPokedexData, pokemonRouter);
 
 app.use("/trainer", trainerRouter);
 

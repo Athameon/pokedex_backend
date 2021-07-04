@@ -3,7 +3,7 @@ const router = express.Router();
 const TrainerController = require("../controllers/trainer");
 
 // GET /trainer/
-router.get("/", TrainerController.get_all_trainers);
+router.get("/", TrainerController.get_all_trainer);
 
 // GET /trainer/:id
 router.get("/:id", TrainerController.get_trainer);

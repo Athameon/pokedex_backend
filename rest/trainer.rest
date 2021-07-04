@@ -1,0 +1,24 @@
+### Get all available trainers
+GET http://localhost:5050/trainer
+
+### Create a new Trainer
+POST http://localhost:5050/trainer
+content-type: application/json
+
+{
+    "name": "Favorite Trainer"
+}
+
+### Get a trainer by its ID
+GET http://localhost:5050/trainer/60e14d8c63d0a1dda3edab7d
+
+### Update a Trainer
+PUT http://localhost:5050/trainer/60e14cd8fd76019cb6b511e4
+content-type: application/json
+
+{
+    "name": "Favorite Trainer Version 3"
+}
+
+### Delete a Trainer
+DELETE http://localhost:5050/trainer/60e14e9aa8542b9df67c9062
